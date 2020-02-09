@@ -1,0 +1,2 @@
+# VisualRegressionTestingSample
+DroidKaigi2020: Androidでもビジュアルリグレッションテストをはじめよう
