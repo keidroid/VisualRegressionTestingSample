@@ -22,23 +22,16 @@ class AndroidXScreenshotTest {
     )
 
     @Test
-    fun simpleScreenshotTest() {
-        activityScenarioRule.scenario.onActivity { activity ->
-            // Screenshot.setScreenshotProcessors(setOf(BasicScreenCaptureProcessor()))
+    fun basicProcessorScreenshotTest() {
+        //Screenshot.setScreenshotProcessors(setOf(BasicScreenCaptureProcessor()))
 
-            // スクリーンショット
-            Screenshot.capture(activity).process()
-
-            // Bitmap取得
-            Screenshot.capture(activity).bitmap
-
-            // ファイル名取得
-            Screenshot.capture(activity).name
+        activityScenarioRule.scenario.onActivity {
+            Screenshot.capture(it).process()
         }
     }
 
     @Test
-    fun customBasicProcessorScreenshotTest() {
+    fun customProcessorScreenshotTest() {
         Screenshot.setScreenshotProcessors(setOf(MyScreenCaptureProcessor()))
 
         activityScenarioRule.scenario.onActivity {
