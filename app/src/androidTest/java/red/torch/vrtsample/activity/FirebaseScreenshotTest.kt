@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 import red.torch.vrtsample.MainActivity
 
 @RunWith(AndroidJUnit4::class)
-class FirebaseScreenShotterTest {
+class FirebaseScreenshotTest {
 
     @get:Rule
     val activityTestRule
@@ -22,17 +22,12 @@ class FirebaseScreenShotterTest {
     )
 
     @Test
-    fun accountActivityPerformCheck_AndroidTest1() {
+    fun firebaseScreenshotTest1() {
         ScreenShotter.takeScreenshot("main_screen_1", activityTestRule.activity)
     }
 
     @Test
-    fun accountActivityPerformCheck_AndroidTest() {
-        ScreenShotter.takeScreenshot("main_screen_2", activityTestRule.activity)
-    }
-
-    @Test
-    fun accountActivityPerformCheck_AndroidTest2() {
+    fun firebaseScreenshotTest2() {
         ScreenShotter.takeScreenshot("main_screen_2", activityTestRule.activity)
     }
 }
