@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.test.runner.AndroidJUnitRunner
 import com.facebook.testing.screenshot.ScreenshotRunner
 
+@Suppress("unused")
 class FacebookScreenshotTestRunner : AndroidJUnitRunner() {
 
     override fun onCreate(arguments: Bundle) {

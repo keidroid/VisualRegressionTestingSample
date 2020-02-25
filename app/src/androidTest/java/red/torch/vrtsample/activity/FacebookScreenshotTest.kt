@@ -1,7 +1,7 @@
 package red.torch.vrtsample.activity
 
-import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
 import com.facebook.testing.screenshot.Screenshot
 import org.junit.Rule
@@ -9,12 +9,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import red.torch.vrtsample.MainActivity
 
-
 @RunWith(AndroidJUnit4::class)
-class FacebookScreenshot22Test {
+class FacebookScreenshotTest {
 
     @get:Rule
-    val activityScenarioRule = activityScenarioRule<MainActivity>()
+    val activityTestRule
+            = ActivityTestRule(MainActivity::class.java, true, true)
 
     @get:Rule
     val grantPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
@@ -23,8 +23,6 @@ class FacebookScreenshot22Test {
 
     @Test
     fun facebookScreenshotTest() {
-        activityScenarioRule.scenario.onActivity {
-            Screenshot.snapActivity(it)
-        }
+        Screenshot.snapActivity(activityTestRule.activity).record()
     }
 }
