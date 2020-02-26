@@ -114,7 +114,9 @@ spoon {
 */
 
 // 3 Facebook Screenshot Tests For Android
+
 screenshots {
-    referenceDir = "screenshots"
-    failureDir = "failureDiff"
+    failureDir = "failureDir"
 }
+
+
