@@ -6,14 +6,14 @@ android.applicationVariants.all { variant ->
         return
     }
 
-    task("regSuit${variantName}Execute") {
+    task("execute${variantName}RegSuit") {
         group = "visual regression testing"
-        description = "Run reg-suit for ${realVariantName}"
+        description = "Execute reg-suit for ${realVariantName}"
 
         dependsOn "connected${variantName}AndroidTest"
         dependsOn "pullLocalScreenshots"
         dependsOn "clearLocalScreenshots"
-        dependsOn "regSuit${variantName}Run"
+        dependsOn "run${variantName}RegSuit"
     }
 
     task("clearLocalScreenshots", type: Exec) {
@@ -28,7 +28,7 @@ android.applicationVariants.all { variant ->
         commandLine android.adbExecutable, 'pull', '/sdcard/screenshots'
     }
 
-    task("regSuit${variantName}Run", type: Exec) {
+    task("run${variantName}RegSuit", type: Exec) {
         group = "visual regression testing"
         description = "Run reg-suit for ${realVariantName}"
         commandLine 'reg-suit', 'run'

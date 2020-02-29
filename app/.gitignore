@@ -1,4 +1,5 @@
 /build
 failureDir
-reg-suit
+reg-suit/*
+!reg-suit/expected
 screenshots
