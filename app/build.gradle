@@ -114,9 +114,8 @@ spoon {
 */
 
 // 3 Facebook Screenshot Tests For Android
-
 screenshots {
     failureDir = "failureDir"
 }
 
-
+apply from: './reg-suit.gradle'

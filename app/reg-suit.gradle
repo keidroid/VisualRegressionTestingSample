@@ -1,0 +1,36 @@
+android.applicationVariants.all { variant ->
+    def variantName = variant.name.capitalize()
+    def realVariantName = variant.name
+
+    if (variant.buildType.name != "debug") {
+        return
+    }
+
+    task("regSuit${variantName}Execute") {
+        group = "visual regression testing"
+        description = "Run reg-suit for ${realVariantName}"
+
+        dependsOn "connected${variantName}AndroidTest"
+        dependsOn "pullLocalScreenshots"
+        dependsOn "clearLocalScreenshots"
+        dependsOn "regSuit${variantName}Run"
+    }
+
+    task("clearLocalScreenshots", type: Exec) {
+        group = "visual regression testing"
+        description = "Clear local screenshots"
+        commandLine android.adbExecutable, 'shell', 'rm', '-r', '/sdcard/screenshots'
+    }
+
+    task("pullLocalScreenshots", type: Exec) {
+        group = "visual regression testing"
+        description = "Pull local screenshots"
+        commandLine android.adbExecutable, 'pull', '/sdcard/screenshots'
+    }
+
+    task("regSuit${variantName}Run", type: Exec) {
+        group = "visual regression testing"
+        description = "Run reg-suit for ${realVariantName}"
+        commandLine 'reg-suit', 'run'
+    }
+}
