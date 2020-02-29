@@ -26,7 +26,7 @@ class AndroidXScreenshotTest {
         //Screenshot.setScreenshotProcessors(setOf(BasicScreenCaptureProcessor()))
 
         activityScenarioRule.scenario.onActivity {
-            Screenshot.capture(it).process()
+        //    Screenshot.capture(it).setName("androidx-basic").process()
         }
     }
 
@@ -35,7 +35,7 @@ class AndroidXScreenshotTest {
         Screenshot.setScreenshotProcessors(setOf(MyScreenCaptureProcessor()))
 
         activityScenarioRule.scenario.onActivity {
-            Screenshot.capture(it).process()
+            Screenshot.capture(it).setName("androidx-custom").process()
         }
     }
 }

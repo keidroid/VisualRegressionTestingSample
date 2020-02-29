@@ -8,7 +8,6 @@ import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.*
 
 /**
  * @see androidx.test.runner.screenshot.BasicScreenCaptureProcessor
@@ -23,7 +22,7 @@ open class MyScreenCaptureProcessor internal constructor(
     @Throws(IOException::class)
     override fun process(capture: ScreenCapture): String {
         var filename =
-            if (capture.name == null) defaultFilename else getFilename(capture.name)
+            if (capture.name == null) defaultFilename else capture.name
         filename += "." + capture.format.toString().toLowerCase()
         val imageFolder = mDefaultScreenshotPath
         imageFolder.mkdirs()
@@ -53,18 +52,11 @@ open class MyScreenCaptureProcessor internal constructor(
 
     /** Returns the default filename for this class suffixed with a UUID.  */
     private val defaultFilename: String
-        get() = getFilename(
-            mDefaultFilenamePrefix
-                    + mFileNameDelimiter
-                    + sAndroidDeviceName
-                    + mFileNameDelimiter
-                    + sAndroidRuntimeVersion
-        )
-
-    /** Returns the filename created from the given prifix and suffixed with a UUID.  */
-    private fun getFilename(prefix: String): String {
-        return prefix + mFileNameDelimiter + UUID.randomUUID()
-    }
+        get() = (mDefaultFilenamePrefix
+                + mFileNameDelimiter
+                + sAndroidDeviceName
+                + mFileNameDelimiter
+                + sAndroidRuntimeVersion)
 
     companion object {
         private var sAndroidRuntimeVersion = Build.VERSION.SDK_INT
