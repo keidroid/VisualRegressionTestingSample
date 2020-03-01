@@ -3,7 +3,7 @@ DroidKaigi2020: [Androidでもビジュアルリグレッションテストを�
 
 ### スライド
 
-https://bit.ly/2Sc8RzB
+https://speakerdeck.com/keidroid/droidkaigi2020-androiddemobiziyuaruriguretusiyontesutowohazimeyou
 
 ### 概要
 
